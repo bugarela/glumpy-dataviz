@@ -35,7 +35,7 @@ attribute vec2 position;
 void main (void) { gl_Position = vec4(position,0,1); }
 """
 quad_fragment = """
-void main(void) { gl_FragColor = vec4(1,1,1,1.0/50.0); }
+void main(void) { gl_FragColor = vec4(1,1,1,1.0/10.0); }
 """
 line_vertex = """
 attribute vec2 position;
@@ -57,7 +57,7 @@ def on_draw(dt):
     if time >= len(temps):
         time = 0
 
-    line["position"][:, 1] = temps[frequency][int(time)]['temp'] / 50
+    line["position"][:, 1] = temps[frequency][int(time)]['temp'] / 20.0 - 1
     time += acc
 
     quad.draw(gl.GL_TRIANGLE_STRIP)
